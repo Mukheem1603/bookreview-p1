@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LibyFun</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <div class="jumbotron">
+            <h1>Hello {{user}}, Welcome to LibyFun!!!</h1>    
+          <h6>LibyFun is a website for all the book lovers out there.</h6>
+        </div>
+        <p>
+          <a href="{{url_for('login')}}"><button class="btn btn-primary">Home</button></a> | <a href="{{url_for('logout')}}"><button class="btn btn-danger">Logout</button></a>
+        </p>
+        {% with messages = get_flashed_messages() %}
+        {% if messages %}
+          
+          {% for message in messages %}
+            <p>{{ message }}<p>
+          {% endfor %}
+          
+        {% endif %}
+      {% endwith %}
+
+      {% if error %}
+      <p>{{error}}</p>
+      {% endif %}
+
+        <h2>Search</h2>
+        <p>____</p>
+        <form action="{{url_for('search')}}" method="POST">
+            <div class="form-group">
+              <input type="text" class="form-control" id="Inputtext" aria-describedby="Help" placeholder="Search for a book" name="query" required>
+              <small id="Help" class="form-text text-muted">Search for a book by its isbn number,tile and author📚</small>
+            </div> <button type="submit" class="btn btn-primary">Search</button>
+          </form>
+          
+        
+
+              
+          
+      </div>
+    
+</body>
+</html>
